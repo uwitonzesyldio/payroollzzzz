@@ -1,0 +1,92 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Smooth page transitions */
+@layer base {
+    body {
+        @apply antialiased;
+    }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+
+::-webkit-scrollbar-track {
+    @apply bg-transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    @apply bg-gray-300 rounded-full hover:bg-gray-400 transition-colors;
+}
+
+/* Print styles */
+@media print {
+    nav, header, footer, .no-print {
+        display: none !important;
+    }
+    body {
+        background: white !important;
+    }
+}
+
+/* Table row hover enhancement */
+.hover-lift {
+    @apply transition-all duration-200;
+}
+
+.hover-lift:hover {
+    @apply -translate-y-0.5 shadow-md;
+}
+
+/* Card hover effect */
+.card-hover {
+    @apply transition-all duration-200;
+}
+
+.card-hover:hover {
+    @apply shadow-xl -translate-y-0.5;
+}
+
+/* Input focus ring enhancement */
+input:focus, select:focus, textarea:focus {
+    @apply ring-offset-0;
+}
+
+/* Select arrow custom styling */
+select {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
+    background-position: right 0.75rem center;
+    background-repeat: no-repeat;
+    background-size: 1.25rem;
+    padding-right: 2.5rem;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+/* Gradient text utility */
+@layer utilities {
+    .text-gradient {
+        @apply bg-clip-text text-transparent bg-gradient-to-r from-emerald-500 to-teal-600;
+    }
+}
+
+/* Success flash animation */
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.alert-enter {
+    animation: slideIn 0.3s ease-out;
+}
